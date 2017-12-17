@@ -7,7 +7,7 @@ console.log("==============");
 
 prompt.start();
 
-
+let correctLetters = "";
 
 list = {
   wordList: ['pikachua', 'bulbasaur', 'charmander', 'squirtle', 'cliffary', 'cubone', 'magikarp'],
@@ -36,9 +36,13 @@ list = {
         console.log("INCORRECT");
         
       } else {
+      
+
+          // current.currentWord.retrieveLetters(result.guess)
+
         console.log("CORRECT");
           if(current.currentWord.findWord()){
-            console.log("You got it! The correct answer is: ", current.currentWord.word);
+            console.log("You got it! The correct answer is: " + current.currentWord.word);
             console.log("==============");
             return;
           }
@@ -55,6 +59,31 @@ list = {
         console.log(current.currentWord.wordRender());
       }
     });
+
+
+
+// code to display the blank and correct characters!
+  function showCorrectLetters () {
+
+    correctLetters = ""
+
+    curWord = current.currentWord.userLetters;
+
+    for ( let i = 0; i < curWord.length; i++) {
+
+      if (curWord[i].show) {
+         correctLetters += " " + curWord[i].character + " ";
+
+      } else {
+        correctLetters += " _ ";
+      }
+
+    }
+
+      console.log("\n" + "\n" + correctLetters);
+  }
+
+showCorrectLetters();
 
   }
 
